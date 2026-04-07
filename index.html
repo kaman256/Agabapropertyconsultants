@@ -15,7 +15,6 @@ import {
   Star,
   Search,
   Filter,
-  Users,
   ShieldCheck,
   Camera,
   Mail,
@@ -24,6 +23,8 @@ import {
   Briefcase,
   Target,
   TrendingUp,
+  Users,
+  Sparkles,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -38,6 +39,7 @@ const brand = {
   location: "Kayabwe Town near Taxi Park",
   phones: ["+256 758 870 036", "+256 786 985 245", "+256 704 765 506"],
   whatsapp: "256758870036",
+  email: "info@agabapropertyconsultants.com",
 };
 
 const navItems = ["Home", "Listings", "About", "Contact"];
@@ -46,25 +48,25 @@ const services = [
   {
     title: "Plots for Sale",
     description:
-      "Professionally presented land opportunities for residential, rental, and commercial development.",
+      "Verified land opportunities for residential, commercial, and investment development.",
     icon: LandPlot,
   },
   {
     title: "Houses & Rentals",
     description:
-      "Clean housing options for clients looking to buy, rent, or invest with confidence.",
+      "Well-presented homes and rental options matched to client needs and budget range.",
     icon: Home,
   },
   {
     title: "New & Used Vehicles",
     description:
-      "Reliable support for clients searching for vehicles suited for family, business, or transport work.",
+      "Trusted vehicle sourcing support for personal, family, and business transport needs.",
     icon: Car,
   },
   {
     title: "Property Consultancy",
     description:
-      "Guidance on inquiries, sourcing, comparisons, and local market decision-making.",
+      "Clear guidance on inquiries, sourcing, comparisons, and local market decision-making.",
     icon: Building2,
   },
 ];
@@ -126,7 +128,7 @@ const listings = [
   },
 ];
 
-const gallery = [
+const showcase = [
   { title: "Premium Homes", subtitle: "Modern residential opportunities" },
   { title: "Verified Plots", subtitle: "Land for residential and commercial use" },
   { title: "Vehicle Deals", subtitle: "New and used vehicles" },
@@ -156,19 +158,42 @@ const testimonials = [
 const faqs = [
   {
     q: "Do you help with site visits?",
-    a: "Yes. Agaba Property Consultants can coordinate visits for plots, houses, and available opportunities.",
+    a: "Yes. Agaba Property Consultants coordinates visits for plots, houses, and available opportunities.",
   },
   {
     q: "Do you only work in Kayabwe?",
-    a: "Kayabwe is the main base, but the business can also support nearby opportunities depending on availability.",
+    a: "Kayabwe is the main base, and support can also extend to nearby opportunities depending on availability.",
   },
   {
     q: "Can I inquire through WhatsApp?",
-    a: "Yes. The website includes a direct WhatsApp call-to-action for quick communication.",
+    a: "Yes. Clients can reach the team directly by WhatsApp for faster communication and follow-up.",
   },
   {
-    q: "Can listings be updated later?",
-    a: "Yes. This website structure is designed so real listings, prices, and images can be added or changed easily.",
+    q: "Do you handle both property and vehicles?",
+    a: "Yes. The business supports plots, houses, rentals, and selected new and used vehicle opportunities.",
+  },
+];
+
+const processSteps = [
+  {
+    title: "Consultation",
+    text: "Share your property or vehicle requirement and receive direct guidance.",
+    icon: Users,
+  },
+  {
+    title: "Selection",
+    text: "Review suitable opportunities based on budget, location, and objective.",
+    icon: Search,
+  },
+  {
+    title: "Inspection",
+    text: "Arrange site visits or viewing appointments for serious consideration.",
+    icon: Target,
+  },
+  {
+    title: "Next Action",
+    text: "Move forward with confidence through a clear and professional client process.",
+    icon: CheckCircle2,
   },
 ];
 
@@ -262,18 +287,18 @@ function Hero({ setCurrentPage }) {
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
           <Badge className="mb-5 w-fit rounded-full border-0 bg-yellow-400 px-4 py-1 text-sm font-semibold text-blue-950">
-            Kayabwe Town Property & Vehicle Experts
+            Trusted Property & Vehicle Consultancy in Kayabwe
           </Badge>
           <h1 className="max-w-2xl text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-            A premium digital home for <span className="text-yellow-300">land</span>, <span className="text-yellow-300">houses</span>, and <span className="text-yellow-300">vehicles</span>.
+            Connecting clients to quality <span className="text-yellow-300">plots</span>, <span className="text-yellow-300">homes</span>, and <span className="text-yellow-300">vehicles</span>.
           </h1>
           <p className="mt-6 max-w-xl text-base leading-7 text-slate-200 sm:text-lg">
-            {brand.name} now looks credible, modern, and ready for serious clients. This version includes a full premium homepage, listings, gallery, WhatsApp contact, testimonials, and dedicated pages.
+            Agaba Property Consultants serves individuals, families, and investors looking for dependable guidance, practical opportunities, and responsive local support.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
             <Button className="rounded-2xl bg-red-600 px-6 hover:bg-red-700" onClick={() => setCurrentPage("Listings")}>
-              View Listings
+              Explore Listings
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button
@@ -281,15 +306,15 @@ function Hero({ setCurrentPage }) {
               className="rounded-2xl border-white/30 bg-white/10 px-6 text-white hover:bg-white/20 hover:text-white"
               onClick={() => setCurrentPage("Contact")}
             >
-              Contact Us
+              Book Consultation
             </Button>
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
             {[
               ["Location", "Kayabwe Town"],
-              ["Focus", "Plots • Houses • Vehicles"],
-              ["Promise", brand.tagline],
+              ["Specialty", "Plots • Houses • Vehicles"],
+              ["Commitment", brand.tagline],
             ].map(([label, value]) => (
               <div key={label} className="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur">
                 <p className="text-xs uppercase tracking-[0.18em] text-slate-300">{label}</p>
@@ -310,16 +335,16 @@ function Hero({ setCurrentPage }) {
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="rounded-3xl bg-slate-100 p-6">
                   <LandPlot className="mb-4 h-9 w-9 text-blue-950" />
-                  <h3 className="text-xl font-bold text-slate-900">Property Opportunities</h3>
+                  <h3 className="text-xl font-bold text-slate-900">Verified Opportunities</h3>
                   <p className="mt-2 text-sm leading-6 text-slate-600">
-                    Clean presentation of plots, houses, and business-ready property options.
+                    Well-presented land and housing options for serious buyers and investors.
                   </p>
                 </div>
                 <div className="rounded-3xl bg-yellow-50 p-6">
                   <Car className="mb-4 h-9 w-9 text-red-600" />
-                  <h3 className="text-xl font-bold text-slate-900">Vehicle Section</h3>
+                  <h3 className="text-xl font-bold text-slate-900">Vehicle Selection</h3>
                   <p className="mt-2 text-sm leading-6 text-slate-600">
-                    A structured space for new and used vehicles with inquiry support.
+                    Reliable vehicle options supported by direct consultation and follow-up.
                   </p>
                 </div>
               </div>
@@ -327,7 +352,7 @@ function Hero({ setCurrentPage }) {
               <div className="mt-5 rounded-3xl bg-blue-950 p-6 text-white">
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div>
-                    <p className="text-sm uppercase tracking-[0.18em] text-yellow-300">Main Office Area</p>
+                    <p className="text-sm uppercase tracking-[0.18em] text-yellow-300">Office Location</p>
                     <h3 className="mt-2 text-2xl font-bold">{brand.location}</h3>
                   </div>
                   <Badge className="rounded-full border-0 bg-white/15 px-4 py-1 text-white">Open for inquiries</Badge>
@@ -338,9 +363,9 @@ function Hero({ setCurrentPage }) {
 
           <div className="grid gap-4 sm:grid-cols-3">
             {[
-              { label: "Trusted Local Support", icon: ShieldCheck },
-              { label: "Faster Client Response", icon: Phone },
-              { label: "Better Online Credibility", icon: TrendingUp },
+              { label: "Trusted Guidance", icon: ShieldCheck },
+              { label: "Responsive Service", icon: Phone },
+              { label: "Professional Delivery", icon: TrendingUp },
             ].map((item) => {
               const Icon = item.icon;
               return (
@@ -363,10 +388,10 @@ function Hero({ setCurrentPage }) {
 
 function StatsStrip() {
   const stats = [
-    { value: "3", label: "Core business lines" },
-    { value: "24/7", label: "Inquiry convenience" },
-    { value: "100%", label: "Mobile-friendly design" },
-    { value: "1", label: "Professional online brand" },
+    { value: "3", label: "Business divisions" },
+    { value: "24/7", label: "Client inquiry access" },
+    { value: "100%", label: "Mobile responsive" },
+    { value: "1", label: "Trusted local brand" },
   ];
 
   return (
@@ -388,8 +413,8 @@ function ServicesSection() {
     <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
       <SectionTitle
         eyebrow="Services"
-        title="A cleaner and more premium business presentation"
-        text="This upgraded website gives Agaba Property Consultants a more serious and premium digital presence than the business card alone."
+        title="Professional support across property and vehicle needs"
+        text="A refined brand experience begins with clear services, organized presentation, and direct access to the right opportunities."
       />
 
       <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -424,17 +449,17 @@ function WhyChooseUs() {
   const reasons = [
     {
       title: "Local market understanding",
-      text: "The brand is positioned around trusted local knowledge in Kayabwe and surrounding opportunities.",
+      text: "Decisions are guided by practical knowledge of Kayabwe and surrounding opportunities.",
       icon: MapPin,
     },
     {
       title: "Multi-service convenience",
-      text: "Clients can inquire about land, housing, and vehicles from one place.",
+      text: "Clients can inquire about land, housing, rentals, and vehicles in one place.",
       icon: Briefcase,
     },
     {
-      title: "Clear inquiry path",
-      text: "The layout makes it easy for clients to call, message, and request details fast.",
+      title: "Clear client process",
+      text: "Every inquiry is handled with a direct and professional path from first contact to next action.",
       icon: Target,
     },
   ];
@@ -443,9 +468,9 @@ function WhyChooseUs() {
     <section className="bg-slate-50 py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionTitle
-          eyebrow="Why Us"
-          title="Built to attract trust faster"
-          text="A property business wins more attention when the brand looks organized, reachable, and credible online."
+          eyebrow="Why Choose Us"
+          title="A business built on trust, access, and response"
+          text="Strong presentation matters, but trust is earned through clarity, responsiveness, and dependable service."
         />
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -464,6 +489,46 @@ function WhyChooseUs() {
             );
           })}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function ProcessSection() {
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <SectionTitle
+        eyebrow="Our Process"
+        title="A straightforward path from inquiry to decision"
+        text="Clear structure helps clients move with confidence and helps the business operate with consistency."
+      />
+
+      <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {processSteps.map((step, index) => {
+          const Icon = step.icon;
+          return (
+            <motion.div
+              key={step.title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.06 }}
+            >
+              <Card className="h-full rounded-[28px] border-slate-200 shadow-sm">
+                <CardContent className="p-6">
+                  <div className="mb-5 flex items-center justify-between">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-950 text-white">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <span className="text-sm font-semibold text-slate-400">0{index + 1}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900">{step.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{step.text}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
@@ -492,8 +557,8 @@ function ListingsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionTitle
             eyebrow="Listings"
-            title="A full listings page for land, houses, and vehicles"
-            text="This page makes the website feel like a serious real estate and property consultancy platform instead of only a simple landing page."
+            title="Available opportunities"
+            text="Browse selected property and vehicle listings with search and category filters for faster access."
           />
 
           <div className="mt-8 grid gap-4 rounded-[28px] bg-white p-4 shadow-sm md:grid-cols-[1fr_220px] md:p-5">
@@ -567,13 +632,13 @@ function ListingsPage() {
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <SectionTitle
-          eyebrow="Gallery"
-          title="A visual gallery section for stronger presentation"
-          text="Real property photos, vehicles, team photos, or site visit images can later replace these premium placeholders."
+          eyebrow="Portfolio"
+          title="Selected business showcase"
+          text="A polished portfolio area supports trust, visual presentation, and stronger first impressions."
         />
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-          {gallery.map((item, index) => (
+          {showcase.map((item, index) => (
             <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 18 }}
@@ -606,30 +671,30 @@ function AboutPage() {
     <div>
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <SectionTitle
-          eyebrow="About"
-          title="About Agaba Property Consultants"
-          text="This version turns the business into a modern, trustworthy brand that can speak to clients on mobile and desktop professionally."
+          eyebrow="About Us"
+          title="A dependable name in property and vehicle consultancy"
+          text="Agaba Property Consultants serves clients who value direct communication, practical support, and locally grounded opportunity sourcing."
         />
 
         <div className="mt-10 grid gap-8 lg:grid-cols-2">
           <Card className="rounded-[30px] border-0 bg-blue-950 text-white shadow-xl">
             <CardContent className="p-8">
-              <p className="text-sm uppercase tracking-[0.2em] text-yellow-300">Brand Statement</p>
-              <h3 className="mt-3 text-3xl font-bold">Trusted local guidance with a stronger digital face</h3>
+              <p className="text-sm uppercase tracking-[0.2em] text-yellow-300">Company Profile</p>
+              <h3 className="mt-3 text-3xl font-bold">Professional guidance with a long-term business outlook</h3>
               <p className="mt-5 text-base leading-7 text-slate-200">
-                Agaba Property Consultants operates in a space where trust matters. This website gives the business a premium first impression, making it easier for prospective clients to believe in the brand before even making the first call.
+                The business is positioned to serve individuals, families, traders, and investors seeking structured access to plots, houses, rentals, and vehicles through a trusted local channel.
               </p>
             </CardContent>
           </Card>
 
           <div className="grid gap-4">
             {[
-              "Professional homepage with premium layout",
-              "Dedicated listings page with filtering",
-              "WhatsApp button for direct inquiries",
-              "Gallery section for future photos",
-              "Testimonials, FAQs, and contact page",
-              "Strong color identity based on the original card",
+              "Clear and professional brand presentation",
+              "Organized listings and service structure",
+              "Direct WhatsApp and phone access",
+              "Strong mobile and desktop experience",
+              "Client trust through clarity and responsiveness",
+              "Consistent positioning for long-term growth",
             ].map((item) => (
               <div key={item} className="flex items-start gap-4 rounded-3xl border border-slate-200 p-5 shadow-sm">
                 <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-2xl bg-yellow-100 text-yellow-700">
@@ -646,8 +711,8 @@ function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionTitle
             eyebrow="Testimonials"
-            title="Client confidence section"
-            text="These placeholders can later be replaced with real customer reviews to deepen trust and social proof."
+            title="What clients say"
+            text="Trust grows when the client experience is clear, responsive, and results-driven."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -673,9 +738,9 @@ function AboutPage() {
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <SectionTitle
-          eyebrow="FAQs"
-          title="Questions clients may ask before calling"
-          text="A good website answers the basics immediately and reduces hesitation."
+          eyebrow="Frequently Asked Questions"
+          title="Helpful answers before first contact"
+          text="Good service starts by making important information easy to find."
         />
 
         <div className="mt-10 grid gap-4">
@@ -705,9 +770,9 @@ function ContactPage() {
     <section className="bg-slate-50 py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionTitle
-          eyebrow="Contact"
-          title="A complete contact page with stronger conversion"
-          text="Clients should be able to call, WhatsApp, or send a website inquiry without friction."
+          eyebrow="Contact Us"
+          title="Speak with the team"
+          text="Reach Agaba Property Consultants for inquiries, consultations, site visits, and opportunity details."
         />
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_1.1fr]">
@@ -756,8 +821,10 @@ function ContactPage() {
                 <div className="flex items-start gap-4">
                   <Mail className="mt-1 h-5 w-5 text-red-600" />
                   <div>
-                    <p className="font-semibold text-slate-900">Email Slot</p>
-                    <p className="text-sm text-slate-600">An official business email can be added later.</p>
+                    <p className="font-semibold text-slate-900">Email</p>
+                    <a href={`mailto:${brand.email}`} className="text-sm text-blue-950 hover:underline">
+                      {brand.email}
+                    </a>
                   </div>
                 </div>
               </CardContent>
@@ -768,7 +835,7 @@ function ContactPage() {
             <CardContent className="p-6 sm:p-8">
               <div className="mb-6">
                 <h3 className="text-2xl font-bold text-slate-900">Send an inquiry</h3>
-                <p className="mt-2 text-sm text-slate-600">This form is styled and ready for later backend or email integration.</p>
+                <p className="mt-2 text-sm text-slate-600">Submit your details and the team can follow up directly.</p>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
@@ -801,14 +868,15 @@ function HomePage({ setCurrentPage }) {
       <StatsStrip />
       <ServicesSection />
       <WhyChooseUs />
+      <ProcessSection />
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <SectionTitle
-              eyebrow="Featured"
-              title="Ready for real listings, photos, and client growth"
-              text="The homepage now contains clear sections that can later be connected to real data, actual photos, and ongoing property updates."
+              eyebrow="Featured Listings"
+              title="Selected opportunities at a glance"
+              text="A focused section that keeps valuable opportunities visible and easy to act on."
             />
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {listings.slice(0, 4).map((item) => (
@@ -826,16 +894,16 @@ function HomePage({ setCurrentPage }) {
 
           <Card className="rounded-[32px] border-0 bg-blue-950 text-white shadow-2xl">
             <CardContent className="p-8">
-              <Badge className="rounded-full border-0 bg-yellow-300 text-blue-950">Website Upgrade</Badge>
-              <h3 className="mt-4 text-3xl font-bold">What was added</h3>
+              <Badge className="rounded-full border-0 bg-yellow-300 text-blue-950">Professional Standard</Badge>
+              <h3 className="mt-4 text-3xl font-bold">Built for long-term brand presence</h3>
               <div className="mt-6 grid gap-3 text-sm text-slate-200">
                 {[
-                  "Premium real-estate style homepage",
-                  "Full listings page with search and filtering",
-                  "WhatsApp call-to-action buttons",
-                  "Gallery section for properties and vehicles",
-                  "About page with testimonials and FAQs",
-                  "Full contact page with inquiry form",
+                  "Strong mobile-first business presentation",
+                  "Organized service and listings structure",
+                  "Direct WhatsApp and call conversion paths",
+                  "Premium visual direction for trust and credibility",
+                  "Professional contact flow for client inquiries",
+                  "Consistent brand tone for long-term growth",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3 rounded-2xl bg-white/10 p-3">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 text-yellow-300" />
@@ -844,11 +912,35 @@ function HomePage({ setCurrentPage }) {
                 ))}
               </div>
               <Button className="mt-8 rounded-2xl bg-red-600 px-6 hover:bg-red-700" onClick={() => setCurrentPage("Contact")}>
-                Launch Contact Page
+                Contact the Team
                 <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 py-16 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionTitle
+            eyebrow="Business Showcase"
+            title="Presentation that supports trust"
+            text="A clean brand impression helps clients take the next step with confidence."
+          />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            {showcase.slice(0, 3).map((item) => (
+              <Card key={item.title} className="overflow-hidden rounded-[28px] border-0 bg-white shadow-sm">
+                <div className="h-60 bg-gradient-to-br from-slate-200 via-slate-100 to-yellow-100" />
+                <CardContent className="p-6">
+                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-950 text-white">
+                    <Sparkles className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900">{item.title}</h3>
+                  <p className="mt-2 text-sm text-slate-600">{item.subtitle}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
     </>
@@ -885,15 +977,18 @@ function Footer({ setCurrentPage }) {
             </div>
           </div>
           <p className="mt-4 max-w-xl text-sm leading-7 text-slate-600">
-            A premium starter website for a growing property consultancy brand in Kayabwe Town.
+            Serving clients with direct access to plots, homes, rentals, and selected vehicle opportunities.
           </p>
+          <div className="mt-4 flex flex-wrap gap-4 text-sm text-slate-500">
+            <span>{brand.location}</span>
+            <span>{brand.email}</span>
+          </div>
         </div>
 
         <div className="grid gap-2 text-sm text-slate-600">
           {navItems.map((item) => (
             <button key={item} onClick={() => setCurrentPage(item)} className="text-left hover:text-blue-950">
-              {item}
-            </button>
+              {item}</button>
           ))}
         </div>
       </div>
